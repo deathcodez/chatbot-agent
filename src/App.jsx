@@ -107,44 +107,53 @@ const App = () => {
   }, [selecthistory]);
 
   return (
-    <div className="grid grid-cols-5 h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black text-center">
+    <div className="grid grid-cols-1 md:grid-cols-5 h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black text-center">
       {/* Sidebar */}
-      <div className="col-span-1 bg-white/5 backdrop-blur-xl border-r border-white/10  text-white text-2xl font-bold shadow-2xl pt-5">
-        <h1 className="text-xl text-blue-200 flex justify-center  ">
-          <span>RECENT SEARCH </span>
+     <div className="col-span-5 md:col-span-1 bg-white/5 backdrop-blur-xl border-r border-white/10 text-white shadow-2xl pt-3 md:pt-5 h-auto md:h-screen">
 
-          <button
-            onClick={clearhistory}
-            className="fill-cyan-100 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xl flex items-center justify-center shadow-lg hover:scale-110  active:scale-90 transition-all duration-300 cursor-pointer"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="20px"
-              viewBox="0 -960 960 960"
-              width="20px"
-            >
-              <path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" />
-            </svg>
-          </button>
-        </h1>
-        <ul className="text-left overflow-auto text-sm">
-          {recenthistory &&
-            recenthistory.map((historyitem, index) => (
-              <li
-                key={index}
-                onClick={() => {
-                  setselecthistory(historyitem);
-                }}
-                className="p-1 truncate pl-5 text-zinc-500 cursor-pointer hover:bg-zinc-700 hover:text-zinc-300"
-              >
-                {historyitem}
-              </li>
-            ))}
-        </ul>
-      </div>
+  {/* Header */}
+  <div className="flex items-center justify-between px-3 md:px-4">
+
+    <h1 className="text-sm md:text-xl text-blue-200 font-bold">
+      RECENT SEARCH
+    </h1>
+
+    <button
+      onClick={clearhistory}
+      className="border border-cyan-400/40 p-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 active:scale-95 transition-all duration-300"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="18px"
+        viewBox="0 -960 960 960"
+        width="18px"
+        className="fill-white"
+      >
+        <path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Z" />
+      </svg>
+    </button>
+  </div>
+
+  {/* History List */}
+  <ul className="text-left overflow-x-auto md:overflow-y-auto text-xs md:text-sm mt-3 flex md:block gap-2 px-2 md:px-0 whitespace-nowrap md:whitespace-normal no-scrollbar">
+
+    {recenthistory &&
+      recenthistory.map((historyitem, index) => (
+        <li
+          key={index}
+          onClick={() => {
+            setselecthistory(historyitem);
+          }}
+          className="border border-zinc-700 md:border-none rounded-full md:rounded-none px-3 py-2 md:p-2 md:pl-5 text-zinc-400 cursor-pointer hover:bg-zinc-700 hover:text-zinc-200 transition-all duration-200 truncate min-w-fit"
+        >
+          {historyitem}
+        </li>
+      ))}
+  </ul>
+</div>
 
       {/* Main Section */}
-      <div className="col-span-4 flex flex-col  h-screen overflow-hidden">
+      <div className="col-span-1 md:col-span-4 flex flex-col  h-screen overflow-hidden">
         {/* Header */}
         <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mt-10 tracking-wide animate-pulse">
           USE SONAL'S AI BRAIN
@@ -216,8 +225,8 @@ const App = () => {
         </div>
 
         {/* Input Box */}
-        <div className="w-3/4 mx-auto mb-8">
-          <div className="bg-white/10 backdrop-blur-2xl border border-cyan-400/30 shadow-[0_0_30px_rgba(34,211,238,0.25)] rounded-full flex items-center px-3 py-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-cyan-400/40">
+        <div className="w-[95%] md:w-3/4 mx-auto mb-4 md:mb-8 px-2">
+          <div className="bg-zinc-900/90 backdrop-blur-2xl border border-cyan-400/30 shadow-[0_0_30px_rgba(34,211,238,0.25)] rounded-full flex items-center px-3 py-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-cyan-400/40">
             <input
               onChange={(eventt) => setquestion(eventt.target.value)}
               value={question}
