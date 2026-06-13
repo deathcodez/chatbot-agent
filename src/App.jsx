@@ -156,7 +156,7 @@ const App = () => {
       <div className="col-span-1 md:col-span-4 flex flex-col  h-screen overflow-hidden">
         {/* Header */}
         <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mt-10 tracking-wide animate-pulse">
-          USE SONAL'S AI BRAIN
+          USE AMAN'S AI BRAIN
         </div>
 
         {/* spinnerr or loader */}
